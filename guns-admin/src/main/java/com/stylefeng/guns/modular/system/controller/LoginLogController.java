@@ -9,7 +9,7 @@ import com.stylefeng.guns.core.common.constant.Const;
 import com.stylefeng.guns.core.common.constant.factory.PageFactory;
 import com.stylefeng.guns.modular.system.model.OperationLog;
 import com.stylefeng.guns.modular.system.service.ILoginLogService;
-import com.stylefeng.guns.modular.system.warpper.LogWarpper;
+import com.stylefeng.guns.modular.system.wrapper.LogWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,7 +51,7 @@ public class LoginLogController extends BaseController {
     public Object list(@RequestParam(required = false) String beginTime, @RequestParam(required = false) String endTime, @RequestParam(required = false) String logName) {
         Page<OperationLog> page = new PageFactory<OperationLog>().defaultPage();
         List<Map<String, Object>> result = loginLogService.getLoginLogs(page, beginTime, endTime, logName, page.getOrderByField(), page.isAsc());
-        page.setRecords((List<OperationLog>) new LogWarpper(result).warp());
+        page.setRecords((List<OperationLog>) new LogWrapper(result).wrap());
         return super.packForBT(page);
     }
 

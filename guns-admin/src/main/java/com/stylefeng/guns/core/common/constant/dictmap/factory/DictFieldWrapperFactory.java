@@ -13,9 +13,9 @@ import java.lang.reflect.Method;
  * @author fengshuonan
  * @date 2017-05-06 15:12
  */
-public class DictFieldWarpperFactory {
+public class DictFieldWrapperFactory {
 
-    public static Object createFieldWarpper(Object parameter, String methodName) {
+    public static Object createFieldWrapper(Object parameter, String methodName) {
         IConstantFactory constantFactory = ConstantFactory.me();
         try {
             Method method = IConstantFactory.class.getMethod(methodName, parameter.getClass());
